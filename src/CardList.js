@@ -4,16 +4,15 @@ import Card from "./Card";
 const CardList = ({ robots, search }) => {
   return (
     <div>
-      {robots.map((user, i) => {
-        return (
-          <Card
-            key={i}
-            id={robots[i].id}
-            name={robots[i].name}
-            email={robots[i].email}
-          />
-        );
-      })}
+      {robots
+        .filter((item) =>
+          item.name.toLowerCase().includes(search.toLowerCase())
+        )
+        .map((user, i) => {
+          return (
+            <Card key={i} id={user.id} name={user.name} email={user.email} />
+          );
+        })}
     </div>
   );
 };
